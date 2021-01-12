@@ -27,6 +27,9 @@ let app = new Vue ({
           this.movies = res.results;
         }
       });
-    }
+    },
+    created() {
+    this.filteredMovie();
+  }
   },
 })
