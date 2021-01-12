@@ -10,7 +10,7 @@
     <body>
 
       <div id="app">
-        <input placeholder="Cerca" v-model.trim="search" type="text" @keyup="filteredMovie">
+        <input placeholder="Cerca" v-model.trim="search" type="text" @keyup.enter="filteredMovie">
         <ul>
           <li v-for="movie in movies">
             <p>{{movie.title}}</p>

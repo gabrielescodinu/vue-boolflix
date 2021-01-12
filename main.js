@@ -17,15 +17,10 @@ let app = new Vue ({
   },
   methods: {
     filteredMovie(){
-      fetch("https://api.themoviedb.org/3/search/movie?api_key=57ed826d9a49253a27b0ca966c4158d0&query=%22%22")
+      fetch("https://api.themoviedb.org/3/search/movie?api_key=57ed826d9a49253a27b0ca966c4158d0&query=" + this.search)
       .then(response => response.json())
       .then(res => {
-        if (this.search) {
-          this.movies = res.results.filter
-          (movies => movies.title.toLowerCase().includes(this.search.toLowerCase()))
-        } else {
           this.movies = res.results;
-        }
       });
     },
     created() {
