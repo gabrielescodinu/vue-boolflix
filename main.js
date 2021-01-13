@@ -25,6 +25,20 @@
 // Qui un esempio di chiamata per le serie tv:
 // https://api.themoviedb.org/3/search/tv?api_key=e99307154c6dfb0b4750f6603256716d&language=it_IT&query=scrubs
 
+// Milestone 3
+// In questa milestone come prima cosa aggiungiamo la copertina del film o della serie
+// al nostro elenco. Ci viene passata dall’API solo la parte finale dell’URL, questo
+// perché poi potremo generare da quella porzione di URL tante dimensioni diverse.
+// Dovremo prendere quindi l’URL base delle immagini di TMDB:
+// https://image.tmdb.org/t/p/ per poi aggiungere la dimensione che vogliamo generare
+// (troviamo tutte le dimensioni possibili a questo link:
+// https://www.themoviedb.org/talk/53c11d4ec3a3684cf4006400) per poi aggiungere la
+// parte finale dell’URL passata dall’API.
+// Esempio di URL:
+// https://image.tmdb.org/t/p/w342/wwemzKWzjKYJFfCeiB57q3r4Bcm.png
+// aggiungi questo prima per andare all'indirizzo https://image.tmdb.org/t/p/w342/
+
+
 let app = new Vue ({
   el: "#app",
   data: {
@@ -33,12 +47,14 @@ let app = new Vue ({
     search: "",
   },
   methods: {
+    // faccio la chiamata api per i film
     filteredMovie(){
       fetch("https://api.themoviedb.org/3/search/movie?api_key=57ed826d9a49253a27b0ca966c4158d0&query=" + this.search)
       .then(response => response.json())
       .then(res => {
         this.movies = res.results;
-        })
+      });
+      // faccio la chiamata api per le serie tv
       fetch("https://api.themoviedb.org/3/search/tv?api_key=57ed826d9a49253a27b0ca966c4158d0&query=" + this.search)
       .then(response => response.json())
       .then(res => {
@@ -54,5 +70,3 @@ let app = new Vue ({
     },
   },
 })
-
-// https://image.tmdb.org/t/p/w342/

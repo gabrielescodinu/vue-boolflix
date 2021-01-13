@@ -1,40 +1,46 @@
 <!DOCTYPE html>
 <html lang="en" dir="ltr">
-    <head>
-        <meta charset="utf-8">
-        <title>Boolflix</title>
-        <link href="https://fonts.googleapis.com/css?family=Lato" rel="stylesheet">
-        <link href="https://fonts.googleapis.com/css?family=Lato&display=swap" rel="stylesheet">
-        <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.5.0/css/all.css">
-    </head>
-    <body>
-      <div id="app">
+  <head>
+      <meta charset="utf-8">
+      <title>Boolflix</title>
+      <link href="https://fonts.googleapis.com/css?family=Lato" rel="stylesheet">
+      <link href="https://fonts.googleapis.com/css?family=Lato&display=swap" rel="stylesheet">
+      <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.5.0/css/all.css">
+      <link rel="stylesheet" href="style.css">
+  </head>
+  <body>
+    <div id="app">
+      <header>
+        <img src="boolflix.png">
         <input placeholder="Cerca" v-model.trim="search" type="text" @keyup.enter="filteredMovie">
-        <ul>
-          <li v-for="movie in movies">
-            <p>{{movie.title}}</p>
-            <p>{{movie.original_title}}</p>
-            <p>{{movie.original_language}}</p>
-            <!-- creo un ciclo v-for per le stelle, richiamando la funzione vote e inserendo come valore il vote_average che è stato converito in un numero da 1 a 5, che ora indica il numero di stelle -->
-            <p>voto:<i class="fas fa-star" v-for="i in vote(movie.vote_average)"></i></p>
-            <!-- <img :src="movie.poster_path"> -->
-          </li>
-          <li v-for="serie in series">
-            <p>{{serie.name}}</p>
-            <p>{{serie.original_title}}</p>
-            <p>{{serie.original_language}}</p>
-            <p>voto:<i class="fas fa-star" v-for="i in vote(serie.vote_average)"></i></p>
-            <!-- <img :src="serie.poster_path"> -->
-          </li>
-        </ul>
-      </div>
+        <a href="#" @click="filteredMovie">SEARCH</a>
+      </header>
+      <ul>
+        <li v-for="movie in movies">
+          <p>{{movie.title}}</p>
+          <p>{{movie.original_title}}</p>
+          <img :src="'flags/' + movie.original_language + '.png'">
+          <!-- creo un ciclo v-for per le stelle, richiamando la funzione vote e inserendo come valore il vote_average che è stato converito in un numero da 1 a 5, che ora indica il numero di stelle -->
+          <p>voto:<i class="fas fa-star" v-for="i in vote (movie.vote_average)"></i></p>
+          <!-- <img :src="movie.poster_path"> -->
+        </li>
+        <li v-for="serie in series">
+          <p>{{serie.name}}</p>
+          <p>{{serie.original_title}}</p>
+          <img :src="'flags/' + serie.original_language + '.png'">
+          <!-- creo un ciclo v-for per le stelle, richiamando la funzione vote e inserendo come valore il vote_average che è stato converito in un numero da 1 a 5, che ora indica il numero di stelle -->
+          <p>voto:<i class="fas fa-star" v-for="i in vote (serie.vote_average)"></i></p>
+          <!-- <img :src="serie.poster_path"> -->
+        </li>
+      </ul>
+    </div>
 
-      <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
-      <script src="https://cdnjs.cloudflare.com/ajax/libs/axios/0.21.1/axios.min.js"
-        integrity="sha512-bZS47S7sPOxkjU/4Bt0zrhEtWx0y0CRkhEp8IckzK+ltifIIE9EMIMTuT/mEzoIMewUINruDBIR/jJnbguonqQ=="
-        crossorigin="anonymous">
-      </script>
-      <script src="https://cdn.jsdelivr.net/npm/vue@2/dist/vue.js"></script>
-      <script src="main.js"></script>
-    </body>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/axios/0.21.1/axios.min.js"
+      integrity="sha512-bZS47S7sPOxkjU/4Bt0zrhEtWx0y0CRkhEp8IckzK+ltifIIE9EMIMTuT/mEzoIMewUINruDBIR/jJnbguonqQ=="
+      crossorigin="anonymous">
+    </script>
+    <script src="https://cdn.jsdelivr.net/npm/vue@2/dist/vue.js"></script>
+    <script src="main.js"></script>
+  </body>
 </html>

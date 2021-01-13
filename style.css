@@ -1,0 +1,36 @@
+* {
+  font-family: "Lato";
+}
+body {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+header {
+  background-color: black;
+  display: flex;
+  align-items: center;
+}
+
+input {
+  padding: 5px;
+}
+
+header a {
+  margin: 20px;
+  text-decoration: none;
+  background-color: white;
+  padding: 5px;
+  border-radius: 2px;
+}
+header a:hover {
+  background-color: darkred;
+  color: white;
+}
+
+header img {
+  height: 30px;
+  margin-left: 20px;
+  margin-right: 20px;
+}
