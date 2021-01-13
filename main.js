@@ -28,8 +28,8 @@
 let app = new Vue ({
   el: "#app",
   data: {
-    movies: [],
-    series: [],
+    movies: {},
+    series: {},
     search: "",
   },
   methods: {
@@ -38,19 +38,21 @@ let app = new Vue ({
       .then(response => response.json())
       .then(res => {
         this.movies = res.results;
-      });
+        })
       fetch("https://api.themoviedb.org/3/search/tv?api_key=57ed826d9a49253a27b0ca966c4158d0&query=" + this.search)
       .then(response => response.json())
       .then(res => {
         this.series = res.results;
       });
     },
-    star(rate){
-      this.movies.vote_average = (this.movies.vote_average * 10)/5;
+    // creiamo una funzione per trasformare il numero decimale 10 in 5. Math.ceil serve per arrotondare in eccesso.
+    vote(number){
+      return Math.ceil(number / 2);
     },
     created() {
       this.filteredMovie();
     },
-
   },
 })
+
+// https://image.tmdb.org/t/p/w342/

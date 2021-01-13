@@ -15,13 +15,16 @@
             <p>{{movie.title}}</p>
             <p>{{movie.original_title}}</p>
             <p>{{movie.original_language}}</p>
-            <p>{{movie.vote_average}}<i class="fas fa-star"></i></p>
+            <!-- creo un ciclo v-for per le stelle, richiamando la funzione vote e inserendo come valore il vote_average che è stato converito in un numero da 1 a 5, che ora indica il numero di stelle -->
+            <p>voto:<i class="fas fa-star" v-for="i in vote(movie.vote_average)"></i></p>
+            <!-- <img :src="movie.poster_path"> -->
           </li>
           <li v-for="serie in series">
             <p>{{serie.name}}</p>
             <p>{{serie.original_title}}</p>
             <p>{{serie.original_language}}</p>
-            <p>{{serie.vote_average}}<i class="fas fa-star"></i></p>
+            <p>voto:<i class="fas fa-star" v-for="i in vote(serie.vote_average)"></i></p>
+            <!-- <img :src="serie.poster_path"> -->
           </li>
         </ul>
       </div>
