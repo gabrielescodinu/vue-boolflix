@@ -5,6 +5,7 @@ body {
   margin: 0;
   padding: 0;
   box-sizing: border-box;
+  background-color: #141414;
 }
 
 header {
@@ -14,23 +15,34 @@ header {
 }
 
 input {
-  padding: 5px;
-}
-
-header a {
+  padding: 7px;
   margin: 20px;
-  text-decoration: none;
-  background-color: white;
-  padding: 5px;
-  border-radius: 2px;
-}
-header a:hover {
-  background-color: darkred;
+  border: 1px solid white;
+  background-color: black;
   color: white;
+  outline: none;
+  width: 200px;
 }
 
 header img {
   height: 30px;
   margin-left: 20px;
   margin-right: 20px;
+}
+
+ul {
+  display: flex;
+  flex-direction: row;
+  list-style: none;
+}
+li {
+  margin: 20px;
+}
+li p {
+  color: white;
+}
+
+
+.cover {
+  border: 2px solid white;
 }

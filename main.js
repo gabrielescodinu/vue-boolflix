@@ -38,13 +38,13 @@
 // https://image.tmdb.org/t/p/w342/wwemzKWzjKYJFfCeiB57q3r4Bcm.png
 // aggiungi questo prima per andare all'indirizzo https://image.tmdb.org/t/p/w342/
 
-
 let app = new Vue ({
   el: "#app",
   data: {
     movies: {},
     series: {},
     search: "",
+    hover: false,
   },
   methods: {
     // faccio la chiamata api per i film
