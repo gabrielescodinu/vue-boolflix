@@ -27,12 +27,12 @@
 
         <!-- tv series -->
         <li v-for="serie in series">
-          <p>{{serie.name}}</p>
-          <p>{{serie.original_title}}</p>
-          <img :src="'flags/' + serie.original_language + '.png'">
+          <img class="cover" @mouseover="hover = true" @mouseleave="hover = false" :src="'https://image.tmdb.org/t/p/w342/' + serie.poster_path">
+          <p v-if="hover">Title: {{serie.name}}</p>
+          <p v-if="hover">Original Title: {{serie.original_title}}</p>
+          <img v-if="hover" :src="'flags/' + serie.original_language + '.png'">
           <!-- creo un ciclo v-for per le stelle, richiamando la funzione vote e inserendo come valore il vote_average che è stato converito in un numero da 1 a 5, che ora indica il numero di stelle -->
-          <p>voto:<i class="fas fa-star" v-for="i in vote (serie.vote_average)"></i></p>
-          <img @mouseover="hover = true" @mouseleave="hover = false" :src="'https://image.tmdb.org/t/p/w342/' + serie.poster_path">
+          <p v-if="hover">voto: <i class="fas fa-star" v-for="i in vote (serie.vote_average)"></i></p>
         </li>
       </ul>
     </div>
