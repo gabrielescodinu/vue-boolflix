@@ -30,6 +30,9 @@ header img {
 }
 
 /* main */
+h1 {
+  color: white;
+}
 ul {
   display: flex;
   flex-direction: row;

@@ -9,13 +9,14 @@
       <link rel="stylesheet" href="style.css">
   </head>
   <body>
+
     <div id="app">
       <header>
         <img src="boolflix.png">
         <input placeholder="Cerca" v-model.trim="search" type="text" @keyup="filteredMovie">
       </header>
+      <!-- movies -->
       <ul>
-        <!-- movies -->
         <li v-for="movie in movies">
           <div @mouseover="hover = true" @mouseleave="hover = false" class="cover">
             <img :src="'https://image.tmdb.org/t/p/w342/' + movie.poster_path">
@@ -28,8 +29,10 @@
             </div>
           </div>
         </li>
+      </ul>
 
-        <!-- tv series -->
+      <!-- tv series -->
+      <ul>
         <li v-for="serie in series">
           <div @mouseover="hover = true" @mouseleave="hover = false" class="cover">
             <img class="cover" :src="'https://image.tmdb.org/t/p/w342/' + serie.poster_path">
