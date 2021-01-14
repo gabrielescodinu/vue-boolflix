@@ -17,22 +17,30 @@
       <ul>
         <!-- movies -->
         <li v-for="movie in movies">
-          <img class="cover" @mouseover="hover = true" @mouseleave="hover = false" :src="'https://image.tmdb.org/t/p/w342/' + movie.poster_path">
-          <p v-if="hover">Title: {{movie.title}}</p>
-          <p v-if="hover">Original Title: {{movie.original_title}}</p>
-          <img v-if="hover" :src="'flags/' + movie.original_language + '.png'">
-          <!-- creo un ciclo v-for per le stelle, richiamando la funzione vote e inserendo come valore il vote_average che è stato converito in un numero da 1 a 5, che ora indica il numero di stelle -->
-          <p v-if="hover">voto: <i class="fas fa-star" v-for="i in vote (movie.vote_average)"></i></p>
+          <div @mouseover="hover = true" @mouseleave="hover = false" class="cover">
+            <img :src="'https://image.tmdb.org/t/p/w342/' + movie.poster_path">
+            <div v-if="hover" class="info">
+              <p>Title: {{movie.title}}</p>
+              <p>Original Title: {{movie.original_title}}</p>
+              <img :src="'flags/' + movie.original_language + '.png'">
+              <!-- creo un ciclo v-for per le stelle, richiamando la funzione vote e inserendo come valore il vote_average che è stato converito in un numero da 1 a 5, che ora indica il numero di stelle -->
+              <p>voto: <i class="fas fa-star" v-for="i in vote (movie.vote_average)"></i></p>
+            </div>
+          </div>
         </li>
 
         <!-- tv series -->
         <li v-for="serie in series">
-          <img class="cover" @mouseover="hover = true" @mouseleave="hover = false" :src="'https://image.tmdb.org/t/p/w342/' + serie.poster_path">
-          <p v-if="hover">Title: {{serie.name}}</p>
-          <p v-if="hover">Original Title: {{serie.original_title}}</p>
-          <img v-if="hover" :src="'flags/' + serie.original_language + '.png'">
-          <!-- creo un ciclo v-for per le stelle, richiamando la funzione vote e inserendo come valore il vote_average che è stato converito in un numero da 1 a 5, che ora indica il numero di stelle -->
-          <p v-if="hover">voto: <i class="fas fa-star" v-for="i in vote (serie.vote_average)"></i></p>
+          <div @mouseover="hover = true" @mouseleave="hover = false" class="cover">
+            <img class="cover" :src="'https://image.tmdb.org/t/p/w342/' + serie.poster_path">
+            <div v-if="hover" class="info">
+              <p>Title: {{serie.name}}</p>
+              <p>Original Title: {{serie.original_title}}</p>
+              <img :src="'flags/' + serie.original_language + '.png'">
+              <!-- creo un ciclo v-for per le stelle, richiamando la funzione vote e inserendo come valore il vote_average che è stato converito in un numero da 1 a 5, che ora indica il numero di stelle -->
+              <p v-if="hover">voto: <i class="fas fa-star" v-for="i in vote (serie.vote_average)"></i></p>
+            </div>
+          </div>
         </li>
       </ul>
     </div>
