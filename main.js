@@ -54,7 +54,6 @@ let app = new Vue ({
     movies: {},
     series: {},
     search: "",
-    hover: false,
   },
   methods: {
     // faccio la chiamata api per i film
