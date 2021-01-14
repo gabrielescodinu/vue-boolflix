@@ -23,11 +23,12 @@
               <img :src="'https://image.tmdb.org/t/p/w342/' + movie.poster_path">
             </div>
             <div class="info">
-              <p>Title: {{movie.title}}</p>
+              <p>{{movie.title}}</p>
               <p>Original Title: {{movie.original_title}}</p>
               <img :src="'flags/' + movie.original_language + '.png'">
+              <p>{{movie.release_date}}</p>
               <!-- creo un ciclo v-for per le stelle, richiamando la funzione vote e inserendo come valore il vote_average che è stato converito in un numero da 1 a 5, che ora indica il numero di stelle -->
-              <p>voto: <i class="fas fa-star" v-for="i in vote (movie.vote_average)"></i></p>
+              <p><i class="fas fa-star" v-for="i in vote (movie.vote_average)"></i></p>
             </div>
           </div>
         </li>
@@ -38,14 +39,15 @@
         <li v-for="serie in series">
           <div class="cover">
             <div class="poster">
-              <img :src="'https://image.tmdb.org/t/p/w342/' + serie.poster_path">              
+              <img :src="'https://image.tmdb.org/t/p/w342/' + serie.poster_path">
             </div>
             <div class="info">
-              <p>Title: {{serie.name}}</p>
+              <p>{{serie.name}}</p>
               <p>Original Title: {{serie.original_title}}</p>
               <img :src="'flags/' + serie.original_language + '.png'">
+              <p>{{serie.first_air_date}}</p>
               <!-- creo un ciclo v-for per le stelle, richiamando la funzione vote e inserendo come valore il vote_average che è stato converito in un numero da 1 a 5, che ora indica il numero di stelle -->
-              <p>voto: <i class="fas fa-star" v-for="i in vote (serie.vote_average)"></i></p>
+              <p><i class="fas fa-star" v-for="i in vote (serie.vote_average)"></i></p>
             </div>
           </div>
         </li>
