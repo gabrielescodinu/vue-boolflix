@@ -13,7 +13,7 @@
     <div id="app">
       <header>
         <img src="boolflix.png">
-        <input placeholder="Cerca" v-model.trim="search" type="text" @keyup="filteredMovie">
+        <input placeholder="Cerca" v-model.trim="search" type="text" @keyup.enter="filteredMovie">
       </header>
       <!-- movies -->
       <ul>
@@ -54,7 +54,6 @@
       </ul>
     </div>
 
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/axios/0.21.1/axios.min.js"
       integrity="sha512-bZS47S7sPOxkjU/4Bt0zrhEtWx0y0CRkhEp8IckzK+ltifIIE9EMIMTuT/mEzoIMewUINruDBIR/jJnbguonqQ=="
       crossorigin="anonymous">

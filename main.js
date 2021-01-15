@@ -48,6 +48,12 @@
 // ● Andando con il mouse sopra una card (on hover), appaiono le informazioni
 // aggiuntive già prese nei punti precedenti più la overview
 
+// Milestone 5 (Opzionale):
+// Partendo da un film o da una serie, richiedere all'API quali sono gli attori che fanno
+// parte del cast aggiungendo alla nostra scheda Film / Serie SOLO i primi 5 restituiti
+// dall’API con Nome e Cognome, e i generi associati al film con questo schema:
+// “Genere 1, Genere 2, …”.
+
 let app = new Vue ({
   el: "#app",
   data: {
@@ -58,24 +64,31 @@ let app = new Vue ({
   methods: {
     // faccio la chiamata api per i film
     filteredMovie(){
-      fetch("https://api.themoviedb.org/3/search/movie?api_key=57ed826d9a49253a27b0ca966c4158d0&query=" + this.search)
-      .then(response => response.json())
+      axios.get("https://api.themoviedb.org/3/search/movie?api_key=57ed826d9a49253a27b0ca966c4158d0&query=" + this.search)
       .then(res => {
-        this.movies = res.results;
+        this.movies = res.data.results;
+        // for (var i = 0; i < this.movies.length; i++) {
+        //   const element = this.movies[i];
+        //   const id = element.id
+        //   this.actors(id)
+        // }
       });
       // faccio la chiamata api per le serie tv
-      fetch("https://api.themoviedb.org/3/search/tv?api_key=57ed826d9a49253a27b0ca966c4158d0&query=" + this.search)
-      .then(response => response.json())
+      axios.get("https://api.themoviedb.org/3/search/tv?api_key=57ed826d9a49253a27b0ca966c4158d0&query=" + this.search)
       .then(res => {
-        this.series = res.results;
+        this.series = res.data.results;
       });
     },
-    // creiamo una funzione per trasformare il numero decimale 10 in 5. Math.ceil serve per arrotondare in eccesso.
+    // creo una funzione per richiamare gli attori del film tramite il suo id
+    actors(film_id){
+      axios.get(`https://api.themoviedb.org/3/movie/${film_id}/credits?api_key=57ed826d9a49253a27b0ca966c4158d0`)
+      .then(res => {
+        const cast = res.data.cast;
+      });
+    },
+    // creo una funzione per trasformare il numero decimale 10 in 5. Math.ceil serve per arrotondare in eccesso.
     vote(number){
       return Math.ceil(number / 2);
-    },
-    created() {
-      this.filteredMovie();
     },
   },
 })
