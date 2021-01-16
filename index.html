@@ -16,6 +16,7 @@
         <input placeholder="Cerca" v-model.trim="search" type="text" @keyup.enter="filteredMovie">
       </header>
       <!-- movies -->
+      <h1 class="title" v-if="showTitle">Originali Boolflix</h1>
       <ul>
         <li v-for="movie in movies">
           <div class="cover">
@@ -35,6 +36,7 @@
       </ul>
 
       <!-- tv series -->
+      <h1 class="title" v-if="showTitle">Serie TV</h1>
       <ul>
         <li v-for="serie in series">
           <div class="cover">

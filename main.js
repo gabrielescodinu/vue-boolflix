@@ -60,6 +60,7 @@ let app = new Vue ({
     movies: {},
     series: {},
     search: "",
+    showTitle: false,
   },
   methods: {
     // faccio la chiamata api per i film
@@ -67,6 +68,7 @@ let app = new Vue ({
       axios.get("https://api.themoviedb.org/3/search/movie?api_key=57ed826d9a49253a27b0ca966c4158d0&query=" + this.search)
       .then(res => {
         this.movies = res.data.results;
+        this.showTitle = true;
         // for (var i = 0; i < this.movies.length; i++) {
         //   const element = this.movies[i];
         //   const id = element.id
