@@ -69,11 +69,6 @@ let app = new Vue ({
       .then(res => {
         this.movies = res.data.results;
         this.showTitle = true;
-        // for (var i = 0; i < this.movies.length; i++) {
-        //   const element = this.movies[i];
-        //   const id = element.id
-        //   this.actors(id)
-        // }
       });
       // faccio la chiamata api per le serie tv
       axios.get("https://api.themoviedb.org/3/search/tv?api_key=57ed826d9a49253a27b0ca966c4158d0&query=" + this.search)

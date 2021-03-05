@@ -3,7 +3,7 @@
   <head>
       <meta charset="utf-8">
       <title>Boolflix</title>
-      <link href="https://fonts.googleapis.com/css?family=Lato" rel="stylesheet">
+      <link href="https://fonts.googleapis.com/css?family=Helvetica" rel="stylesheet">
       <link href="https://fonts.googleapis.com/css?family=Lato&display=swap" rel="stylesheet">
       <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.5.0/css/all.css">
       <link rel="stylesheet" href="style.css">
@@ -12,53 +12,80 @@
 
     <div id="app">
       <header>
-        <img src="boolflix.png">
-        <input placeholder="Cerca" v-model.trim="search" type="text" @keyup.enter="filteredMovie">
+        <div class="nav-left">
+          <a href=""><img src="boolflix.png"></a>
+          <a href="">Home</a>
+          <a href="">TV Series</a>
+          <a href="">Film</a>
+          <a href="">News and Populars</a>
+          <a href="">My List</a>
+        </div>
+
+        <div class="nav-right">
+          <input class="search" placeholder="Search..." v-model.trim="search" type="text" @keyup.enter="filteredMovie">
+          <i class="fas fa-search"></i>
+          <a href=""><i class="fas fa-bell"></i></a>
+          <a href=""><i class="fas fa-gift"></i></a>
+          <a href=""><i class="fas fa-sort-down"></i></a>
+          <a href=""><img src="img/netflix-profile.png"></a>
+        </div>
       </header>
 
+      
+      
       <!-- movies -->
-      <h1 class="title" v-if="showTitle">Originali Boolflix</h1>
-      <ul>
+      <h1 class="title" v-if="showTitle">Boolflix Originals</h1>
+      <ul id="container">
+        <button id="slideBack" type="button"><i class="fas fa-chevron-left"></i></button>
         <li v-for="movie in movies">
-          <div class="cover">
-            <div class="poster">
-              <img :src="'https://image.tmdb.org/t/p/w342/' + movie.poster_path">
+          <a href="">
+            <div class="cover">
+              <div class="poster">
+                <img :src="'https://image.tmdb.org/t/p/w342/' + movie.poster_path">
+              </div>
+              <div class="info">
+                <p>{{movie.title}}</p>
+                <p>Original Title: {{movie.original_title}}</p>
+                <img :src="'flags/' + movie.original_language + '.png'">
+                <p>Release: {{movie.release_date}}</p>
+                <!-- creo un ciclo v-for per le stelle, richiamando la funzione vote e inserendo come valore il vote_average che è stato converito in un numero da 1 a 5, che ora indica il numero di stelle -->
+                <p><i class="fas fa-star" v-for="i in vote (movie.vote_average)"></i></p>
+              </div>
             </div>
-            <div class="info">
-              <p>{{movie.title}}</p>
-              <p>Original Title: {{movie.original_title}}</p>
-              <img :src="'flags/' + movie.original_language + '.png'">
-              <p>{{movie.release_date}}</p>
-              <!-- creo un ciclo v-for per le stelle, richiamando la funzione vote e inserendo come valore il vote_average che è stato converito in un numero da 1 a 5, che ora indica il numero di stelle -->
-              <p><i class="fas fa-star" v-for="i in vote (movie.vote_average)"></i></p>
-            </div>
-          </div>
+          </a>
+          
         </li>
+        <button id="slide" type="button"><i class="fas fa-chevron-right"></i></button>
       </ul>
 
       <!-- tv series -->
-      <h1 class="title" v-if="showTitle">Serie TV</h1>
-      <ul>
+      <h1 class="title" v-if="showTitle">TV Series</h1>
+      <ul id="container2">
+        <button id="slideBack2" type="button"><i class="fas fa-chevron-left"></i></button>
         <li v-for="serie in series">
-          <div class="cover">
-            <div class="poster">
-              <img :src="'https://image.tmdb.org/t/p/w342/' + serie.poster_path">
+          <a href="">
+            <div class="cover">
+              <div class="poster">
+                <img :src="'https://image.tmdb.org/t/p/w342/' + serie.poster_path">
+              </div>
+              <div class="info">
+                <p>{{serie.name}}</p>
+                <p>Original Title: {{serie.original_title}}</p>
+                <img :src="'flags/' + serie.original_language + '.png'">
+                <p>{{serie.first_air_date}}</p>
+                <!-- creo un ciclo v-for per le stelle, richiamando la funzione vote e inserendo come valore il vote_average che è stato converito in un numero da 1 a 5, che ora indica il numero di stelle -->
+                <p><i class="fas fa-star" v-for="i in vote (serie.vote_average)"></i></p>
+              </div>
             </div>
-            <div class="info">
-              <p>{{serie.name}}</p>
-              <p>Original Title: {{serie.original_title}}</p>
-              <img :src="'flags/' + serie.original_language + '.png'">
-              <p>{{serie.first_air_date}}</p>
-              <!-- creo un ciclo v-for per le stelle, richiamando la funzione vote e inserendo come valore il vote_average che è stato converito in un numero da 1 a 5, che ora indica il numero di stelle -->
-              <p><i class="fas fa-star" v-for="i in vote (serie.vote_average)"></i></p>
-            </div>
-          </div>
+          </a>
         </li>
+        <button id="slide2" type="button"><i class="fas fa-chevron-right"></i></button>
       </ul>
     </div>
 
     <script src="https://cdnjs.cloudflare.com/ajax/libs/axios/0.21.1/axios.min.js" integrity="sha512-bZS47S7sPOxkjU/4Bt0zrhEtWx0y0CRkhEp8IckzK+ltifIIE9EMIMTuT/mEzoIMewUINruDBIR/jJnbguonqQ==" crossorigin="anonymous"></script>
     <script src="https://cdn.jsdelivr.net/npm/vue@2/dist/vue.js"></script>
     <script src="main.js"></script>
+    <script src="scroll.js"></script>
   </body>
 </html>
