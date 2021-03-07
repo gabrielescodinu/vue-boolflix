@@ -48,7 +48,6 @@ header img {
 /* main */
 h1 {
   color: white;
-  margin-top: 50px;
 }
 ul {
   display: flex;
@@ -56,7 +55,7 @@ ul {
   list-style: none;
 }
 li {
-  margin: 20px;
+  margin: 20px 15px 25px 10px;
 }
 li p {
   color: white;

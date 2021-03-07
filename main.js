@@ -76,13 +76,6 @@ let app = new Vue ({
         this.series = res.data.results;
       });
     },
-    // creo una funzione per richiamare gli attori del film tramite il suo id
-    actors(film_id){
-      axios.get(`https://api.themoviedb.org/3/movie/${film_id}/credits?api_key=57ed826d9a49253a27b0ca966c4158d0`)
-      .then(res => {
-        const cast = res.data.cast;
-      });
-    },
     // creo una funzione per trasformare il numero decimale 10 in 5. Math.ceil serve per arrotondare in eccesso.
     vote(number){
       return Math.ceil(number / 2);
